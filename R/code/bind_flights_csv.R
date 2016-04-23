@@ -27,4 +27,4 @@ read_csv_bind <- function(directory) {
 
 flights <- read_csv_bind('~/Documents/data/Flights/')
 
-write_csv(flights, 'Documents/data/Flights/flights_full.csv')
+write_csv(flights, 'R/data/flights_full.csv')
