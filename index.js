@@ -25,7 +25,7 @@ app.get('/', function(request, response) {
 var flightDetails = require("./routes/flightdetails");
 app.use("/flightdetails", flightDetails);
 
-var weatherDetails = require("./routes/weatherDetails");
+var weatherDetails = require("./routes/weatherData");
 app.use("/weatherDetails", weatherDetails);
 
 app.listen(app.get('port'), function() {
