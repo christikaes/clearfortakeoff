@@ -1,10 +1,7 @@
 body {
     padding-top: 50px;
-
     font-family: 'Merriweather', serif;
 }
-
-
 
 /*
  * -- SPLASH STYLES --
@@ -56,4 +53,8 @@ body {
 /* This is the submit button */
 .pure-button{
   background-color: white;
+}
+
+input[name="flight-number"] {
+    margin: 0px 0px 30px 0px;
 }

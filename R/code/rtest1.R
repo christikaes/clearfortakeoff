@@ -10,4 +10,4 @@ X2 <- data.frame(X2)
 
 dat <- bind_cols(X1, X2)
 
-cat(dat)
+print(dat)
