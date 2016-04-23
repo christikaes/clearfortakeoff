@@ -7,9 +7,6 @@ $(function() {
         $.get("/flightdetails/" + flightNumber)
             .done(function(response) {
                 console.log(response);
-								console.log(response.FlightInfoResult.flights[0].origin)
-
-
             })
             .fail(function() {
                 console.log("failed");
