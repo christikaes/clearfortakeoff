@@ -25,24 +25,28 @@ app.get('/', function(request, response) {
 
 app.get('/flightdata', function(req, res) {
 
-    var flight_number = 'AAL1444'
-    url = 'http://flightaware.com/live/flight/ ' + flight_number;
-    // this is just an example
-    // hoping to connect the user input into the url for the flight #
+    console.log("hi i'm working /flightdata")
+    var key_backup = 'christikaes'
+    var secret_backup = 'bf80780c69a92619b60df68ed730e4ba45b01df1'
 
-    request(url, function(error, response, html) {
+
+    var key = 'sugaroverflow';
+    var secret = '321682929bae540c26ce3ff63cd0f1021748db1c';
+
+    var options = {
+      url: "http://flightxml.flightaware.com/json/FlightXML2/FlightInfo?ident='AAL33'",
+
+      headers: {
+        'Authorization': "Basic " + new Buffer(key + ":" + secret, "utf8").toString("base64")
+      }
+    }
+    request(options, function(error, response, body) {
         if (!error) {
-
-
+          // var resultsObj = JSON.parse(body);
+          console.log(body)
+          //Just an example of how to access properties:
         }
 
-
-
-        fs.writeFile('flightdata.json', JSON.stringify(json, null, 4), function(err) {
-
-            console.log('File successfully written! - Check your project directory for the flightdata.json file');
-
-        })
 
         //NO UI for the app yet just this ! // call the UI view here later
         res.send('Check your console!')
