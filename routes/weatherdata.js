@@ -1,34 +1,21 @@
 var router = require("express").Router();
-var request = require("request");
+var restler = require("restler");
 
-router.get('/weatherdata', function(req, res) {
+// var username = 'christikaes'
+// var apiKey = 'bf80780c69a92619b60df68ed730e4ba45b01df1'
 
-    lat = 47.4500;
-    lng = -122.3117;
-    appid = '2db8626a7ac46c83fe388c802fab589c';
-    backup_appid = '';
-    url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lng + '&appid=' + appid;
+var fxml_url = "http://flightxml.flightaware.com/json/FlightXML2/";
+var username = "sugaroverflow";
+var apiKey = '321682929bae540c26ce3ff63cd0f1021748db1c';
 
-
-    request(url, function(error, response, body) {
-        if (!error) {
-
-            var resultsObj = JSON.parse(body);
-            //Just an example of how to access properties:
-            console.log(resultsObj.MRData);
-
-        }
-
-
-        fs.writeFile('weatherdata.json', JSON.stringify(resultsObj, null, 4), function(err) {
-
-            console.log('File successfully written! - Check your project directory for the weatherdata.json file');
-
-        })
-
-        res.send('Check your console!')
-
-    });
+router.get('/:airport', function(req, res) {
+	restler.get(fxml_url + "MetarEx", {
+		username: username,
+		password: apiKey,
+		query: { airport : req.params.airport, howMany: 1 }
+	}).on("success", function(result, response) {
+		res.send(result);
+	});
 });
 
 module.exports = router;
