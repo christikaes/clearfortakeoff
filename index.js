@@ -13,7 +13,6 @@ var express = require('express');
 var app = express();
 var path = require("path");
 var fs = require('fs');
-var request = require('request');
 
 app.use('/static', express.static(__dirname + '/public'));
 app.set('port', (process.env.PORT || 3000));
@@ -23,67 +22,11 @@ app.get('/', function(request, response) {
     response.sendFile(path.join(__dirname + '/views/pages/index.html'));
 });
 
-app.get('/flightdata/:flightnumber', function(req, res) {
+var flightDetails = require("./routes/flightdetails");
+app.use("/flightdetails", flightDetails);
 
-    var key_backup = 'christikaes'
-    var secret_backup = 'bf80780c69a92619b60df68ed730e4ba45b01df1'
-
-
-    var key = 'sugaroverflow';
-    var secret = '321682929bae540c26ce3ff63cd0f1021748db1c';
-
-    var flightNumber = req.params.flightnumber;
-
-    var options = {
-      url: "http://flightxml.flightaware.com/json/FlightXML2/FlightInfo?ident='{0}'".replace("{0}", flightNumber),
-      headers: {
-        'Authorization': "Basic " + new Buffer(key + ":" + secret, "utf8").toString("base64")
-      }
-    };
-
-    request(options, function(error, response, body) {
-        if (!error) {
-          // var resultsObj = JSON.parse(body);
-          console.log(body)
-          //Just an example of how to access properties:
-        }
-
-
-        //NO UI for the app yet just this ! // call the UI view here later
-        res.send('Check your console!')
-
-    });
-})
-
-app.get('/weatherdata', function(req, res) {
-
-    lat = 47.4500;
-    lng = -122.3117;
-    appid = '2db8626a7ac46c83fe388c802fab589c';
-    backup_appid = '';
-    url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lng + '&appid=' + appid;
-
-
-    request(url, function(error, response, body) {
-        if (!error) {
-
-            var resultsObj = JSON.parse(body);
-            //Just an example of how to access properties:
-            console.log(resultsObj.MRData);
-
-        }
-
-
-        fs.writeFile('weatherdata.json', JSON.stringify(resultsObj, null, 4), function(err) {
-
-            console.log('File successfully written! - Check your project directory for the weatherdata.json file');
-
-        })
-
-        res.send('Check your console!')
-
-    });
-});
+var weatherDetails = require("./routes/weatherDetails");
+app.use("/weatherDetails", weatherDetails);
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
