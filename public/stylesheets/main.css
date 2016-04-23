@@ -1,23 +1,41 @@
+body {
+    padding-top: 50px;
+}
+
+input {
+    color: black;
+    padding: 10px;
+}
+
 .jumbotron {
     background: #532F8C;
     color: white;
     padding-bottom: 80px;
 }
+
+.jumbotron input {
+    color: black;
+}
+
 .jumbotron .btn-primary {
     background: #845ac7;
     border-color: #845ac7;
 }
+
 .jumbotron .btn-primary:hover {
     background: #7646c1;
 }
+
 .jumbotron p {
     color: #d9ccee;
     max-width: 75%;
     margin: 1em auto 2em;
 }
+
 .navbar + .jumbotron {
     margin-top: -20px;
 }
+
 .jumbotron .lang-logo {
     display: block;
     background: #B01302;
@@ -28,6 +46,7 @@
     margin: auto;
     border: 2px solid white;
 }
+
 .jumbotron .lang-logo img {
     max-width: 100%;
 }
