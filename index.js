@@ -14,7 +14,7 @@ app.get('/', function(request, response) {
 var flightDetails = require("./routes/flightdetails");
 app.use("/flightdetails", flightDetails);
 
-var weatherDetails = require("./routes/weatherData");
+var weatherDetails = require("./routes/weatherdata");
 app.use("/weatherDetails", weatherDetails);
 
 var rtest = require("./routes/rtest");
