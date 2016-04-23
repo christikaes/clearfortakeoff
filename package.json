@@ -1,11 +1,18 @@
 {
-  "name"         : "node-web-scrape",
-  "version"      : "0.0.1",
-  "description"  : "Scrape le web.",
-  "main"         : "server.js",
-  "author"       : "Scotch",
-  "dependencies" : {
-    "express"    : "latest",
-    "request"    : "latest"
+  "name": "node-web-scrape",
+  "version": "0.0.1",
+  "description": "Scrape le web.",
+  "main": "server.js",
+  "author": "Scotch",
+  "scripts": {
+  	"buildjs": "webpack jslib/main.js public/javascript/bundle.js"
+  },
+  "dependencies": {
+    "express": "latest",
+    "request": "latest"
+  },
+  "devDependencies": {
+    "jquery": "^2.2.3",
+    "webpack": "^1.13.0"
   }
 }
