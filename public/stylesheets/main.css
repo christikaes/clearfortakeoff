@@ -9,7 +9,8 @@ body {
  */
 
 .splash-container {
-    background: #1f8dd6;
+    /*background: #1f8dd6;*/
+    background: #333333;
     z-index: 1;
     overflow: hidden;
     /* The following styles are required for the "scroll-over" effect */
@@ -26,7 +27,8 @@ body {
     height: 50%;
     margin: auto;
     position: absolute;
-    top: 100px; left: 0; bottom: 0; right: 0;
+    top: 0; 
+    left: 0; bottom: 0; right: 0;
     text-align: center;
     text-transform: uppercase;
 }
