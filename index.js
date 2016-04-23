@@ -25,7 +25,6 @@ app.get('/', function(request, response) {
 
 app.get('/flightdata/:flightnumber', function(req, res) {
 
-    console.log("hi i'm working /flightdata")
     var key_backup = 'christikaes'
     var secret_backup = 'bf80780c69a92619b60df68ed730e4ba45b01df1'
 
@@ -74,22 +73,13 @@ app.get('/weatherdata', function(req, res) {
 
         }
 
-        // To write to the system we will use the built in 'fs' library.
-        // In this example we will pass 3 parameters to the writeFile function
-        // Parameter 1 :  output.json - this is what the created filename will be called
-        // Parameter 2 :  JSON.stringify(json, null, 4) - the data to write, here we do an extra step by calling JSON.stringify to make our JSON easier to read
-        // Parameter 3 :  callback function - a callback function to let us know the status of our function
 
-
-        //this works and we get the whole json
-        // i guess parsing I have to deal with myself! :)
         fs.writeFile('weatherdata.json', JSON.stringify(resultsObj, null, 4), function(err) {
 
             console.log('File successfully written! - Check your project directory for the weatherdata.json file');
 
         })
 
-        // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
         res.send('Check your console!')
 
     });
