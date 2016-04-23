@@ -1,0 +1,8 @@
+{
+    "departure_airport": " John F Kennedy Intl (KJFK)Terminal 8, Gate 40",
+    "departure_time": "02:12PM MST",
+    "arrival_airport": "",
+    "arrival_time": "02:12PM MST",
+    "status": " \n\t\t\tStatus\n\t\t\tTaxiing (pushed from gate 6 minutes ago)\n\t\t\t\n\t\t\t\n\t\t\t\t Aircraft\n\t\t\t\tBoeing 737-800 (twin-jet) (B738 – photos)\n\t\t\t\tSpeed\n\t\t\t\t\tFiled: 446 kts  (graph)\n\t\t\t\t\n\t\t\t\tAltitude\n\t\t\t\t\tFiled: 36,000 feet  (graph)\n\t\t\t\tDistance\n\t\tDirect: 2,151 sm    Planned: 2,151 smFareAverage: $246.00 (airline insight)CabinFirst: Lunch / Economy: Food for sale\n\t\t\t\t\tRoute\n\t\t\t\t\tRBV J230 AIR J110 TILMN J110 STL J19 ICT J19 FTI J244 ZUN EAGUL6  (Decode)\n\t\t\t",
+    "arrival_aiport": " Phoenix Sky Harbor Intl (KPHX)Terminal 4, Gate B13"
+}
