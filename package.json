@@ -8,6 +8,7 @@
     "buildjs": "webpack jslib/main.js public/javascript/bundle.js"
   },
   "dependencies": {
+    "dateformat": "^1.0.12",
     "express": "latest",
     "request": "latest"
   },
