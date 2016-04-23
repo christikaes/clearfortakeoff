@@ -14,7 +14,6 @@ var app = express();
 var path    = require("path");
 var fs = require('fs');
 var request = require('request');
-var cheerio = require('cheerio');
 
 app.set('port', (process.env.PORT || 3000));
 
@@ -33,50 +32,6 @@ app.get('/flightdata', function(req, res) {
 
     request(url, function(error, response, html) {
         if (!error) {
-            var $ = cheerio.load(html);
-
-            //these are the fields I think we need from /flightaware
-            var origin
-            var destination
-            var departure_time
-            var arrival_time
-            var status
-
-            var json = {
-                origin: "",
-                departure_time: "",
-                destination:"",
-                arrival_time: ""
-                // status:""
-            };
-
-            $('.track-panel-departure').filter(function() {
-                var data = $(this);
-                origin = data.children().text();
-
-                json.origin = origin;
-            });
-
-            $('.track-panel-arrival').filter(function() {
-                var data = $(this);
-                destination = data.children().text();
-
-                json.destination = destination;
-            })
-
-            $('.track-panel-actualtime em').each(function(el){
-                $(el).text()
-            });
-
-
-
-            // status needs to be parsed
-            // $('.track-panel-inner').filter(function() {
-            //     var data = $(this);
-            //     status = data.first().text();
-            //     json.status = status;
-            // })
-
 
 
         }
