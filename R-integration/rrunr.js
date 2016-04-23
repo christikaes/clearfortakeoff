@@ -1,6 +1,7 @@
 var exec = require("child_process").exec;
+var file = "test.R";
 
-function runr(file, args, callback) {
+function runr(args, callback) {
 	var cmd = "Rscript {0} {1}"
 		.replace("{0}", file)
 		.replace("{1}", args || "");
