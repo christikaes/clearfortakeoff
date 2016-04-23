@@ -3,11 +3,11 @@ var airportdata = require("./airportdata");
 var _ = require("underscore");
 
 function convertIcaoToIata(icao) {
-	var icaoIndex = 4;
-	var iataIndex = 5;
-	var matchedRow = _.filter(airportData, function(dataRow) {
-		return dataRow[icaoIndex] == icao.upperCase();
-	});
+	var icaoIndex = 5;
+	var iataIndex = 4;
+	var matchedRow = _.filter(airportdata, function(dataRow) {
+		return dataRow[icaoIndex] == icao.toUpperCase();
+	})[0];
 	return matchedRow[iataIndex];
 }
 
@@ -27,3 +27,5 @@ function predict(options, callback) {
 		callback(routput);
 	});
 }
+
+module.exports = predict;

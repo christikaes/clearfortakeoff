@@ -22,11 +22,11 @@ router.get('/:flightnumber', function(req, res) {
 		predictor({
 			flightNumber: req.params.flightnumber,
 			origin: result.FlightInfoResult.flights[0].origin,
-			destination: result.FlightInfoResult.flights[0].origin
+			destination: result.FlightInfoResult.flights[0].destination
 		}, function(output) {
 			res.send(output);
 		});
-		
+
 	});
 });
 
