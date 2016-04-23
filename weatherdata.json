@@ -1,0 +1,47 @@
+{
+    "coord": {
+        "lon": -122.29,
+        "lat": 47.45
+    },
+    "weather": [
+        {
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10n"
+        },
+        {
+            "id": 701,
+            "main": "Mist",
+            "description": "mist",
+            "icon": "50n"
+        }
+    ],
+    "base": "cmc stations",
+    "main": {
+        "temp": 286.74,
+        "pressure": 1009,
+        "humidity": 72,
+        "temp_min": 285.15,
+        "temp_max": 288.15
+    },
+    "wind": {
+        "speed": 2.6,
+        "deg": 180
+    },
+    "clouds": {
+        "all": 75
+    },
+    "dt": 1461374441,
+    "sys": {
+        "type": 1,
+        "id": 2948,
+        "message": 0.0061,
+        "country": "US",
+        "sunrise": 1461416688,
+        "sunset": 1461467446
+    },
+    "id": 5809805,
+    "name": "SeaTac",
+    "cod": 200
+}
