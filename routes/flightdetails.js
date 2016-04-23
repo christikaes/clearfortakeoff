@@ -1,14 +1,6 @@
 var router = require("express").Router();
 var restler = require("restler");
-var airportdata = require("../airportdata");
-
-/*
-app.get("/airportdata", function(req, res) {
-	var iataindex = 4;
-	var icaoindex = 5;
-	res.send(airportData[0][iataindex] + ", " + airportData[0][icaoindex]);
-});
-*/
+var predictor = require("../R-integration/flight-predict");
 
 // var key_backup = 'christikaes'
 // var secret_backup = 'bf80780c69a92619b60df68ed730e4ba45b01df1'
@@ -23,7 +15,18 @@ router.get('/:flightnumber', function(req, res) {
 		password: apiKey,
 		query: { ident : req.params.flightnumber, howMany: 1 }
 	}).on("success", function(result, response) {
-		res.send(result);
+		// flight#
+		// origin => IATA
+		// destination => IATA
+		// pass in weather data as well
+		predictor({
+			flightNumber: req.params.flightnumber,
+			origin: result.FlightInfoResult.flights[0].origin,
+			destination: result.FlightInfoResult.flights[0].origin
+		}, function(output) {
+			res.send(output);
+		});
+		
 	});
 });
 
