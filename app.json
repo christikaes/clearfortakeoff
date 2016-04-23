@@ -1,0 +1,8 @@
+{
+  "name": "Express Test",
+  "description": "Starter Heroku for Express",
+  "repository": "",
+  "logo": "",
+  "keywords": ["node", "express", "static"],
+  "image": ""
+}
