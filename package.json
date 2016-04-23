@@ -12,6 +12,7 @@
     "request": "latest"
   },
   "devDependencies": {
+    "csv-parse": "^1.0.4",
     "jquery": "^2.2.3",
     "restler": "^3.4.0",
     "webpack": "^1.13.0"
