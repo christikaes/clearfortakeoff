@@ -1,5 +1,4 @@
 var router = require("express").Router();
-var request = require("request");
 var restler = require("restler");
 
 // var key_backup = 'christikaes'

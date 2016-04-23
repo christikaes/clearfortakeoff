@@ -8,7 +8,6 @@ Next, we will format the extracted data into a format we need
 Finally, we will save this formatted data into a JSON file on our machine
 */
 
-
 var express = require('express');
 var app = express();
 var path = require("path");
@@ -27,6 +26,10 @@ app.use("/flightdetails", flightDetails);
 
 var weatherDetails = require("./routes/weatherData");
 app.use("/weatherDetails", weatherDetails);
+
+var rtest = require("./routes/rtest");
+app.use("/r", rtest);
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
