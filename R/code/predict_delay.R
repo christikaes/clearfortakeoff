@@ -1,7 +1,10 @@
 # script to download wunderground flight data
-fake.code <- 'BOS'
+library(randomForest)
+args = commandArgs(trailingOnly = TRUE)
 
-UniqueCarrier3 <- as.factor('AAL')
+fake.code <- args[1]
+
+UniqueCarrier3 <- as.factor(args[2])
 
 date.today <- Sys.time()
 
