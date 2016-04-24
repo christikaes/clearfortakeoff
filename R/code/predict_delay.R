@@ -26,7 +26,7 @@ download.file(paste0('https://www.wunderground.com/history/airport/', fake.code,
 
 request.dat <- read.csv('R/data/flight_request.csv')
 
-load('R/Code/train_rf_noOrigin.RData')
+load('R/code/train_rf_noOrigin.RData')
 
 #remove date
 request.dat <- request.dat[2:ncol(request.dat)]
