@@ -4,6 +4,7 @@
 .RHistory
 .Rproj
 R/data
+R-christi/data
 R/plots
 
 # Node build artifacts
