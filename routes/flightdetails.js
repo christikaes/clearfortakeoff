@@ -71,7 +71,10 @@ router.get('/:flightnumber', function(req, res) {
         console.log(wundergroundUrl);
        	request(wundergroundUrl, function(error, response, body) {
        		if (error) resp.send(error);
+
+          console.log(body);
           var weatherData = parseWeatherData(body);
+
           predictor({
             uniqueCarrier: req.params.flightnumber.substring(0,3),
             weatherData: weatherData
