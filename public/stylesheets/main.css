@@ -1,6 +1,5 @@
 body {
     padding-top: 50px;
-    font-family: 'Merriweather', serif;
     background: #333333;
 }
 
@@ -21,7 +20,11 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   overflow: hidden;
-  background-color: aliceblue;
+  background-color: #e0f7fa;
   border-radius: 50%;
   text-align: center;
+}
+
+.loading {
+  padding-top: 130px;
 }

@@ -5,7 +5,7 @@ $(function() {
     $("." + page).show();
   }
 
-  showView("loading");
+  showView("input");
 
   $("#submit").on("click", function(e) {
       showView("loading");
