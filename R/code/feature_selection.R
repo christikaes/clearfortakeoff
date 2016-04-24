@@ -14,7 +14,7 @@ flights <- flights %>%
          DepTime, DepDelayMinutes, DepTimeBlk, AirTime, Distance) %>%
   # filter out entries where Delay is missing
   filter(!is.na(DepDelayMinutes)) %>%
-  filter(Year == '2015')
+  filter(Year == '2014')
 
 flights.subset <- flights %>%
   # create vector of binary delay indicators
@@ -35,8 +35,12 @@ flights.subset <- inner_join(flights.subset, airlines)
 
 rm(airlines, flights)
 
+flights.subset$FlightDate <- as.Date(flights.subset$FlightDate)
+
+airport.weather$date <- as.Date(airport.weather$date)
+
 # join weather and flight delays
-train.full <- inner_join(flights.subset, airport.weather, by = c('Origin' = 'Airport',
+train.full <- dplyr::inner_join(flights.subset, airport.weather, by = c('Origin' = 'Airport',
                                                    'FlightDate' = 'date'))
 
 rm(airport.weather, flights.subset)

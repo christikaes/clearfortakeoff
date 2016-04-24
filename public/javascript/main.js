@@ -16,7 +16,20 @@ $(function() {
           .done(function(response) {
               console.log("success:");
               console.log(response);
+<<<<<<< HEAD
               $("#percent").text(response);
+=======
+              var result = response.split(" ");
+              var n = parseFloat(result[0]);
+              var y = parseFloat(result[1]);
+
+              if (n > y) {
+                $("#result").text("Flight delay is unlikely - " + (n * 100) + "%");
+              } else {
+                $("#result").text("Expect delays - " + (y * 100) + "%");
+              }
+
+>>>>>>> 78a2fc0632f872b6a499ff0e7833618855e1fcc2
               showView("result");
           })
           .fail(function() {

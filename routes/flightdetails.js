@@ -58,14 +58,19 @@ router.get('/:flightnumber', function(req, res) {
         password: apiKey,
         query: { ident: req.params.flightnumber }
     }).on("success", function(f_result, f_response) {
-        // flight#
-        // origin => IATA
-        // destination => IATA
-        // pass in weather data as well
+        // var uniqueCarrier = req.params.flightnumber.substring(0, 3);
+        var closestFlight = findClosestFlight(new Date(), f_result.FlightInfoResult.flights);
+        var uniqueCarrier = req.params.flightnumber.substring(0, 3);
+        var airport_code= closestFlight.destination;
 
-        //to find the closest flight time
-        //get the current time
-        var closestFlight = findClosestFlight(current_time(), f_result.FlightInfoResult.flights);
+        predictor({
+          uniqueCarrier: uniqueCarrier,
+          origin: airport_code
+        }, function(output) {
+          res.send(output);
+        })
+
+/*
         var wundergroundUrl = createWundergroudUrl(closestFlight);
         console.log(closestFlight);
         console.log(wundergroundUrl);
@@ -75,33 +80,25 @@ router.get('/:flightnumber', function(req, res) {
           var weatherData = parseWeatherData(body);
 
           // fake prediction           
-          console.log("sending 72%");
-          res.send("72%");
+          // console.log("sending 72%");
+          // res.send("72%");
 
-          /*
-          predictor({
-            uniqueCarrier: req.params.flightnumber.substring(0,3),
-            weatherData: weatherData
-          }, function(output) {
-            res.send(output);
-          });
-        */
+          try {
+            predictor({
+              uniqueCarrier: req.params.flightnumber.substring(0,3),
+              weatherData: weatherData
+            }, function(output) {
+              res.send(output);
+            });
+          } catch {
+            res.send("couldn't call R");
+          }
        	});
+        */
     }).on("error", function() {
       console.log("flight info failed");
     });
 });
-
-//find current time
-
-function current_time(){
-  var date = new Date();
-  return date
-}
-//find the closest date
-
-
-
 
 function convertUnixToDate(unix_time) {
     // console.log(unix_time)
@@ -120,7 +117,6 @@ function convertUnixToDate(unix_time) {
     var formattedTime = year + '/' + month + '/' + day;
     // console.log(formattedTime)
     return formattedTime
-
 }
 
 module.exports = router;
