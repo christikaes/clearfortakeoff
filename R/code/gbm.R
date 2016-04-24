@@ -2,14 +2,14 @@ library(gbm)
 
 train <- dplyr::bind_cols(data.frame(train.Y), train)
 
-gbm.predObj <- gbm(train.Y ~ ., distribution = 'multinomial', data = train, n.trees = 200,
-    interaction.depth = 8, shrinkage = .01, bag.fraction = .5, verbose = T)
+gbm.predObj <- gbm(train.Y ~ ., distribution = 'multinomial', data = train, n.trees = 5000,
+    interaction.depth = 8, shrinkage = .005, bag.fraction = .5, verbose = T)
 
 gbm.perf(gbm.predObj)
 
 summary.gbm(gbm.predObj)
 
-yhat.gbm <- predict(gbm.predObj, validate, n.trees = 200)
+yhat.gbm <- predict(gbm.predObj, validate, n.trees = 5000)
 
 yhat.gbm <- data.frame(yhat.gbm)
 
