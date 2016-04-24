@@ -16,7 +16,16 @@ $(function() {
           .done(function(response) {
               console.log("success:");
               console.log(response);
-              $("#result").text(response);
+              var result = response.split(" ");
+              var n = parseFloat(result[0]);
+              var y = parseFloat(result[1]);
+
+              if (n > y) {
+                $("#result").text("Flight delay is unlikely - " + (n * 100) + "%");
+              } else {
+                $("#result").text("Expect delays - " + (y * 100) + "%");
+              }
+
               showView("result");
           })
           .fail(function() {

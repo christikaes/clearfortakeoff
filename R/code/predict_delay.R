@@ -65,4 +65,5 @@ levels(DayOfWeek) <- levels(train$DayOfWeek)
 pass.rf <- data.frame(Month, DayOfWeek, UniqueCarrier3, request.dat)
 
 # pass in flight data
-predict(rf.predObj, pass.rf, type = 'prob')
+dat <- predict(rf.predObj, pass.rf, type = 'prob')
+cat(dat)
