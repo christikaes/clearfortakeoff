@@ -67,16 +67,15 @@ router.get('/:flightnumber', function(req, res) {
        		console.log(body);
        	});
 /*
-	         predictor({
-	             flightNumber: req.params.flightnumber,
-	             origin: f_result.FlightInfoResult.flights[0].origin,
-	             destination: f_result.FlightInfoResult.flights[0].destination
-	         }, function(output) {
-	             res.send(output);
-	         });
+         predictor({
+             flightNumber: req.params.flightnumber,
+             origin: f_result.FlightInfoResult.flights[0].origin,
+             destination: f_result.FlightInfoResult.flights[0].destination
+         }, function(output) {
+             res.send(output);
+         });
+
 	         */
-
-
     });
 });
 
