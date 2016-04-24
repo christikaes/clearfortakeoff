@@ -26,7 +26,7 @@ request.dat <- read.csv('R/data/flight_request.csv')
 load('R/Code/train_rf_noOrigin.RData')
 
 #remove date
-request.dat<- request.dat[2:ncol(request.dat)]
+request.dat <- request.dat[2:ncol(request.dat)]
 
 request.dat$WindDirDegrees <- gsub(pattern = '<br />', replacement = '',
                                    x = request.dat$WindDirDegrees.br...)
