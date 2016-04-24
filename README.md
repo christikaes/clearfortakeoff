@@ -6,6 +6,7 @@
 Solution to the [NASA Space Apps 2016](https://2016.spaceappschallenge.org) Challenge:  [Clear for Take Off](https://2016.spaceappschallenge.org/challenges/aero/clear-for-take-off)
 
 [Link to the live app](http://ec2-54-165-141-202.compute-1.amazonaws.com:3000/)
+
 [Link to our presentation](http://www.slideshare.net/FatimaSarahKhalid/delai-presentation)
 
 ### Introduction 
