@@ -1,6 +1,8 @@
 library(randomForest)
 
-rf.predObj <- randomForest(x = train, y = train.Y, xtest = test, ytest = test.Y,
+load('R/data/train_env.RData')
+
+rf.predObj <- randomForest(x = train, y = train.Y, xtest = validate, ytest = validate.Y,
              mtry = sqrt(ncol(train)), ntree = 200,replace = T, do.trace = T,
              keep.inbag = T, keep.forest = T)
 

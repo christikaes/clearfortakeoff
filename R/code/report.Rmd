@@ -1,0 +1,52 @@
+---
+title: "DelAI"
+author: ""
+date: "April 24, 2016"
+output: html_document
+---
+
+## Random Forest 
+
+```{r, echo = F, warning = F, message=FALSE, fig.align='center'}
+library(ggplot2)
+library(randomForest)
+library(dplyr)
+
+load('~/Documents/GitHub/clearfortakeoff/R/data/train_rf_noOrigin.RData')
+
+
+ggplot(data.frame(rf.predObj$err.rate), aes(x = c(1:200), y = rf.predObj$err.rate[,1])) +
+  geom_line() +
+  xlab('Number of Trees in Ensemble') +
+  ylab('Loss') +
+  ggtitle('Out-of-Bag Error Rate for Bagged Decision Trees')
+
+ggplot(data.frame(rf.predObj$err.rate), aes(x = c(1:200), y = rf.predObj$err.rate[,2])) +
+  geom_line() +
+  xlab('Number of Trees in Ensemble') +
+  ylab('Loss') +
+  ggtitle('Error Rate for Bagged Decision Trees - Class = No Delay')
+
+ggplot(data.frame(rf.predObj$err.rate), aes(x = c(1:200), y = rf.predObj$err.rate[,3])) +
+  geom_line() +
+  xlab('Number of Trees in Ensemble') +
+  ylab('Loss') +
+  ggtitle('Error Rate for Bagged Decision Trees - Class = Delay')
+
+```
+
+Clearly, feature engineering wrt delayed flights needs to be done before this algorithm is ready for prime-time. More detailed and granular data is one path to explore. Another is hard thresholding for binary classification. This threshold would remove the ability to report point estimates for users however, it would potentially reduce the error of the classifier wrt delayed flights. 
+
+### Feature Importance 
+
+```{r, echo=FALSE, warning=FALSE, fig.align='center'}
+rf.imp <- data.frame(importance(rf.predObj))
+
+rf.imp$variable <- row.names(rf.imp)
+
+ggplot(rf.imp, aes(x = reorder(variable, MeanDecreaseGini) , y = MeanDecreaseGini)) +
+  geom_bar(stat = 'identity') +
+  coord_flip() +
+  ylab('Mean Decrease in GINI Coefficient') +
+  xlab('')
+```

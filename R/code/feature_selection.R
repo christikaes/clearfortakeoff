@@ -1,4 +1,6 @@
 # script to explore features and output an .RData file which will be our training data
+# get rid of blank col
+
 library(readr)
 library(dplyr)
 
