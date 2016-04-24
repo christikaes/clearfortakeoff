@@ -43,3 +43,12 @@ body {
 #result {
   font-size: 20px;
 }
+
+#flightNumberInput {
+  text-align: center;
+  left: 0;
+}
+
+#mylabel {
+  left: 0;
+}
