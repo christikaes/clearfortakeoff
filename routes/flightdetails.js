@@ -43,13 +43,18 @@ function createWundergroudUrl(flight) {
     return wunderground_api + query;
 }
 
+function parseWeatherData(respBody) {
+  var weatherSplit = respBody.split("<br />");
+  var weatherDataLine = weatherSplit[1].trim();
+  // remove first item from array which is EST
+  return weatherDataLine.split(",").shift();
+}
+
 router.get('/:flightnumber', function(req, res) {
     restler.get(fxml_url + "FlightInfo", {
         username: username,
         password: apiKey,
-        query: { 
-            ident: req.params.flightnumber
-        }
+        query: { ident: req.params.flightnumber }
     }).on("success", function(f_result, f_response) {
         // flight#
         // origin => IATA
@@ -63,8 +68,15 @@ router.get('/:flightnumber', function(req, res) {
         console.log(closestFlight);
         console.log(wundergroundUrl);
        	request(wundergroundUrl, function(error, response, body) {
-       		if (error) console.log(error);
-       		console.log(body);
+       		if (error) resp.send(error);
+          var weatherData = parseWeatherData(body);
+       		console.log(weatherData);
+          predictor({
+            uniqueCarrier: req.params.flightnumber.substring(0,3),
+            weatherData: weatherData
+          }, function(output) {
+            res.send(output);
+          })
        	});
 /*
          predictor({
@@ -94,8 +106,11 @@ function convertUnixToDate(unix_time) {
     // console.log(unix_time)
     // Create a new JavaScript Date object based on the timestamp
     // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-    var date = new Date(unix_time * 1000);
+    // var date = new Date(unix_time * 1000);
     // console.log(date)
+
+    // testing with current date time
+    var date = new Date();
 
     var month = date.getMonth() + 1;
     var day = date.getDate();
