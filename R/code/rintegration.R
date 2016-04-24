@@ -1,6 +1,28 @@
 # Month, DayOfWeek, UniqueCarrier3, Max.Temperaturelk, 
 library(randomForest)
 
+args = commandArgs(trailingOnly = TRUE)
+
+
+#test <- data.frame(1, "asdf")
+#print(apply(test, MARGIN = 2, class))
+
+#print(apply(abc, MARGIN = 2, class))
+load("R/Code/train_rf_noOrigin.RData")
+validate[1,]$UniqueCarrier3 <- args[1]
+validate[1,]$Min.VisibilityMiles <- 1
+#validate[1,]$CloudCover <- 8
+validate[1,]$Events <- 'Fog-Rain-Snow'
+testdata <- validate[1,]
+
+#print(sapply(testdata, class))
+#print(head(train))
+names(testdata) <- names(train)
+dat <- predict(rf.predObj, testdata[1,], type = 'prob')
+cat(dat)
+
+
+
 if (F) 	 {
 args = commandArgs(trailingOnly = TRUE)
 x1 <- as.numeric(args[1])
@@ -33,20 +55,3 @@ abc <- data.frame(cbind(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, 
 }
 
 
-
-#test <- data.frame(1, "asdf")
-#print(apply(test, MARGIN = 2, class))
-
-#print(apply(abc, MARGIN = 2, class))
-load("R/Code/train_rf_noOrigin.RData")
-
-validate[1,]$Min.VisibilityMiles <- 1
-#validate[1,]$CloudCover <- 8
-validate[1,]$Events <- 'Fog-Rain-Snow'
-testdata <- validate[1,]
-
-print(sapply(testdata, class))
-print(head(train))
-names(testdata) <- names(train)
-dat <- predict(rf.predObj, testdata[1,], type = 'prob')
-print(dat)

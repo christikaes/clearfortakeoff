@@ -1,7 +1,10 @@
 # script to download wunderground flight data
-fake.code <- 'BOS'
+library(randomForest)
+args = commandArgs(trailingOnly = TRUE)
 
-UniqueCarrier3 <- as.factor('AAL')
+fake.code <- args[1]
+
+UniqueCarrier3 <- as.factor(args[2])
 
 date.today <- Sys.time()
 
@@ -62,4 +65,5 @@ levels(DayOfWeek) <- levels(train$DayOfWeek)
 pass.rf <- data.frame(Month, DayOfWeek, UniqueCarrier3, request.dat)
 
 # pass in flight data
-predict(rf.predObj, pass.rf, type = 'prob')
+dat <- predict(rf.predObj, pass.rf, type = 'prob')
+cat(dat)
