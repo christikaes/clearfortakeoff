@@ -63,16 +63,8 @@ router.get('/:flightnumber', function(req, res) {
         console.log(closestFlight);
         console.log(wundergroundUrl);
        	request(wundergroundUrl, function(error, response, body) {
-           predictor({
-               flightNumber: req.params.flightnumber,
-               origin: f_result.FlightInfoResult.flights[0].origin,
-               destination: f_result.FlightInfoResult.flights[0].destination
-           }, function(output) {
-               res.send(output);
-           });
-
-       		// if (error) console.log(error);
-       		// console.log(body);
+       		if (error) console.log(error);
+       		console.log(body);
        	});
 /*
          predictor({

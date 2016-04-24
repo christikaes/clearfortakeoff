@@ -13,16 +13,25 @@ function convertIcaoToIata(icao) {
 
 function predict(options, callback) {
 	// flight number
-	var flightNumber = options.flightNumber;
+	var carrier = options.uniqueCarrier;
 
 	// TODO: add weather data
 	var origin = convertIcaoToIata(options.origin);
 	var destination = convertIcaoToIata(options.destination);
 
-	var args = flightNumber + " " + origin + " " + destination;
+	var date = new Date();	
+	var day=date.getDay() + 1;
+	var month = date.getMonth() + 1;
+	var weatherData = options.weatherData.split(",");
+
+	var args = [month, day, carrier].concat(weatherData);
+	var arguments = args.join(" ");
+
+	// var args = [month, day, carrier, maxtemp, meantemp, mintemp, maxdewpoint, meandewpoint, mindewpoint, maxhumid, meanhumid, minhumid, maxsealvl, meansealvl, minsealvl, maxvisibilitymiles, meanvisibilitymiles, minvisibilitymiles, maxwindspeedmph, meanwindspeedmph, maxgustspeedmph, precipitation, cloudcover, events, winddirdegrees, delayed];
+	// var arguments = args.join(" ");
 
 	// call R
-	rrunr(args, function(routput) {
+	rrunr(arguments, function(routput) {
 		// parse R output
 		callback(routput);
 	});
