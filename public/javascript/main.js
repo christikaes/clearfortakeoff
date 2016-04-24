@@ -2,7 +2,7 @@ $(function() {
 
   var showView = function (page) {
     $(".contents").hide();
-    $("." + page).show();
+    $("." + page).fadeIn("slow");
   }
 
   showView("input");
@@ -16,7 +16,7 @@ $(function() {
           .done(function(response) {
               console.log("success:");
               console.log(response);
-              $("#result").text(response);
+              $("#percent").text(response);
               showView("result");
           })
           .fail(function() {
