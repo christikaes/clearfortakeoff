@@ -1,6 +1,7 @@
 var exec = require("child_process").exec;
 // var file = "test.R";
-var file = "./R/code/rtest1.R";
+// var file = "./R/code/rtest1.R";
+var file = "./R/code/rintegration.R";
 
 function runr(args, callback) {
 	var cmd = "Rscript {0} {1}"
