@@ -29,3 +29,7 @@ body {
 .loading {
   padding-top: 130px;
 }
+
+#result {
+  font-size: 24px;
+}
