@@ -8,7 +8,7 @@ args = commandArgs(trailingOnly = TRUE)
 #print(apply(test, MARGIN = 2, class))
 
 #print(apply(abc, MARGIN = 2, class))
-load("R/Code/train_rf_noOrigin.RData")
+load("R/code/train_rf_noOrigin.RData")
 validate[1,]$UniqueCarrier3 <- args[1]
 validate[1,]$Min.VisibilityMiles <- 1
 #validate[1,]$CloudCover <- 8
