@@ -11,11 +11,12 @@ $(function() {
       showView("loading");
 
       e.preventDefault();
-      var flightNumber = $("input[name='flight-number']").val();
+      var flightNumber = $("#flightNumberInput").val();
       $.get("/flightdetails/" + flightNumber)
           .done(function(response) {
               console.log("success:");
               console.log(response);
+              $("#result").text(response);
               showView("result");
           })
           .fail(function() {
