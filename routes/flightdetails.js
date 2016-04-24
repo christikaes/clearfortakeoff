@@ -46,8 +46,10 @@ function createWundergroudUrl(flight) {
 function parseWeatherData(respBody) {
   var weatherSplit = respBody.split("<br />");
   var weatherDataLine = weatherSplit[1].trim();
-  // remove first item from array which is EST
-  return weatherDataLine.split(",").shift();
+  var splitWeatherData = weatherDataLine.split(",");
+  // remove first EST from weather data
+  splitWeatherData.shift();
+  return splitWeatherData;
 }
 
 router.get('/:flightnumber', function(req, res) {
@@ -70,13 +72,12 @@ router.get('/:flightnumber', function(req, res) {
        	request(wundergroundUrl, function(error, response, body) {
        		if (error) resp.send(error);
           var weatherData = parseWeatherData(body);
-       		console.log(weatherData);
           predictor({
             uniqueCarrier: req.params.flightnumber.substring(0,3),
             weatherData: weatherData
           }, function(output) {
             res.send(output);
-          })
+          });
        	});
 /*
          predictor({

@@ -27,6 +27,9 @@ function predict(options, callback) {
 	var args = [month, day, carrier].concat(weatherData);
 	var arguments = args.join(" ");
 
+	console.log("predict");
+	console.log(arguments);
+
 	// var args = [month, day, carrier, maxtemp, meantemp, mintemp, maxdewpoint, meandewpoint, mindewpoint, maxhumid, meanhumid, minhumid, maxsealvl, meansealvl, minsealvl, maxvisibilitymiles, meanvisibilitymiles, minvisibilitymiles, maxwindspeedmph, meanwindspeedmph, maxgustspeedmph, precipitation, cloudcover, events, winddirdegrees];
 	// var arguments = args.join(" ");
 
