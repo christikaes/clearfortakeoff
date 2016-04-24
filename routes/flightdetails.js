@@ -71,27 +71,24 @@ router.get('/:flightnumber', function(req, res) {
         console.log(wundergroundUrl);
        	request(wundergroundUrl, function(error, response, body) {
        		if (error) resp.send(error);
-
-          console.log(body);
+          // console.log(body);
           var weatherData = parseWeatherData(body);
 
+          // fake prediction           
+          console.log("sending 72%");
+          res.send("72%");
+
+          /*
           predictor({
             uniqueCarrier: req.params.flightnumber.substring(0,3),
             weatherData: weatherData
           }, function(output) {
             res.send(output);
           });
+        */
        	});
-/*
-         predictor({
-             flightNumber: req.params.flightnumber,
-             origin: f_result.FlightInfoResult.flights[0].origin,
-             destination: f_result.FlightInfoResult.flights[0].destination
-         }, function(output) {
-             res.send(output);
-         });
-
-	         */
+    }).on("error", function() {
+      console.log("flight info failed");
     });
 });
 
