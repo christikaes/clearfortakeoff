@@ -8,7 +8,7 @@ train.names[4] <- 'Var.5'
 
 names(train) <- train.names
 
-sample.size <- 1000000
+sample.size <- 500000
 
 train.subsetIndex <- sample(nrow(train), size = sample.size, replace = F)
 
@@ -20,7 +20,7 @@ start.time <- Sys.time()
 
 train.Yhat <- predict(nnet.predObj, train.subset)
 
-runtime <- Sys.time() - start.time 
+runtime <- Sys.time() - start.time
 
 print(runtime)
 

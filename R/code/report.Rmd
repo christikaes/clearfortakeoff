@@ -11,6 +11,12 @@ output: html_document
 library(ggplot2)
 library(randomForest)
 library(dplyr)
+library(rpart)				        # Popular decision tree algorithm
+#library(rattle)					# Fancy tree plot
+library(rpart.plot)				# Enhanced tree plots
+library(RColorBrewer)				# Color selection for fancy tree plot
+library(party)					# Alternative decision tree algorithm
+library(partykit)
 
 load('~/Documents/GitHub/clearfortakeoff/R/data/train_rf_noOrigin.RData')
 
