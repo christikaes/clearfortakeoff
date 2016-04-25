@@ -4,15 +4,18 @@ var request = require("request");
 var predictor = require("../R-integration/flight-predict");
 var _ = require("underscore");
 
-// var key_backup = 'christikaes'
-// var secret_backup = 'bf80780c69a92619b60df68ed730e4ba45b01df1'
+
 
 var fxml_url = "http://flightxml.flightaware.com/json/FlightXML2/";
-var username = "sugaroverflow";
-var apiKey = '321682929bae540c26ce3ff63cd0f1021748db1c';
+
+//flightaware is not free data
+// so we've removed our API keys
+// you can sign up here: http://flightaware.com/commercial/flightxml/ 
+var username = "***";
+var apiKey = '***';
 
 function findClosestFlight(time, flightArray) {
-	// filter on actualdeparturetime = 0		
+	// filter on actualdeparturetime = 0
 	var flightsThatHaveNotLeftYet = _.filter(flightArray, function(fl) {
 		return fl.actualdeparturetime == 0;
 	});
@@ -79,7 +82,7 @@ router.get('/:flightnumber', function(req, res) {
           // console.log(body);
           var weatherData = parseWeatherData(body);
 
-          // fake prediction           
+          // fake prediction
           // console.log("sending 72%");
           // res.send("72%");
 
