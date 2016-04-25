@@ -5,8 +5,7 @@
 
 Solution to the [NASA Space Apps 2016](https://2016.spaceappschallenge.org) Challenge:  [Clear for Take Off](https://2016.spaceappschallenge.org/challenges/aero/clear-for-take-off)
 
-- [Link to the live app](http://ec2-54-165-141-202.compute-1.amazonaws.com:3000/)
-
+- [Link to the live app](http://ec2-54-165-141-202.compute-1.amazonaws.com:3000/) --- > Note: *currently only predicting flights that are (a) today, (b)domestic, and (c) haven't departed yet*
 - [Check out the visualization report of our Machine Learning Algorithm](https://github.com/christinakayastha/clearfortakeoff/blob/master/R/code/report.Rmd)
 
 - [Keynote Presentation](http://www.slideshare.net/FatimaSarahKhalid/delai-presentation)
