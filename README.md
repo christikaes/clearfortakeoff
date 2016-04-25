@@ -5,9 +5,11 @@
 
 Solution to the [NASA Space Apps 2016](https://2016.spaceappschallenge.org) Challenge:  [Clear for Take Off](https://2016.spaceappschallenge.org/challenges/aero/clear-for-take-off)
 
-[Link to the live app](http://ec2-54-165-141-202.compute-1.amazonaws.com:3000/)
+-[Link to the live app](http://ec2-54-165-141-202.compute-1.amazonaws.com:3000/)
 
-[Link to our presentation](http://www.slideshare.net/FatimaSarahKhalid/delai-presentation)
+-[Check out the visualization report of our Machine Learning Algorithm](https://github.com/christinakayastha/clearfortakeoff/blob/master/R/code/report.Rmd)
+
+-[Keynote Presentation](http://www.slideshare.net/FatimaSarahKhalid/delai-presentation)
 
 ### Introduction 
 
@@ -22,7 +24,7 @@ Wunderground weather API, Openflights datasets, DOT historical flight data, Flig
 ### Technologies Used:
 NodeJS, Express Framework, R programming language, AWS, and several Npm modules. 
 
-### Coming soon:
+## Coming soon:
 - Code Refactoring
 - Better documentation
 - Project Refinement
